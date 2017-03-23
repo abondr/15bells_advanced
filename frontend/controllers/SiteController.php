@@ -12,7 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-
+use common\models\UserForm;
 /**
  * Site controller
  */
@@ -139,6 +139,26 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+    
+    /**
+     * Displays about page.
+     *
+     * @return mixed
+     */
+    public function actionUserForm()
+    {
+//        $model = new SignupForm();
+//        return $this->render('signup', [
+//            'model' => $model,
+//        ]);
+        $model = new UserForm();
+       if ($model->load(Yii::$app->request->post())) {
+         /////////// written to be later 
+            echo "part reached";
+        }else{
+            return $this->render("user_form",['model'=>$model]);
+        }
     }
 
     /**
